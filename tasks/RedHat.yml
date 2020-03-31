@@ -1,0 +1,16 @@
+- name: Install uwsgi
+  yum:
+    name: [uwsgi,uwsgi-plugin-python36]
+
+- name: Create uwsgi PID and sock dir
+  copy: 
+    src: uwsgi.conf
+    dest: /etc/tmpfiles.d/uwsgi.conf
+
+- shell: systemd-tmpfiles --create
+
+- name: Start uwsgi
+  service:
+   name: uwsgi
+   enabled: yes
+   state: started
