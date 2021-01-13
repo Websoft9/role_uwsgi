@@ -1,6 +1,11 @@
 - name: Install this role on {{ansible_os_family}}
   include: "{{ansible_os_family}}.yml"
 
+- name: Create uwsgi user
+  user:
+    name: uwsgi
+    shell: /usr/bin/nologin
+    
 - name: Create uwsgi PID and sock dir
   copy: 
     src: uwsgi.conf
