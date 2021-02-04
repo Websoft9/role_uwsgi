@@ -15,6 +15,15 @@
 
 - name: Start uwsgi
   service:
-   name: uwsgi
-   enabled: yes
-   state: started
+    name: uwsgi
+    enabled: yes
+    state: started
+
+# display version and service state of components
+- name: Get uwsgi version
+  shell: sudo echo $(uwsgi --version) |sudo tee -a /data/logs/install_version.txt
+
+- name: Check uwsgi Service
+  shell: systemctl status uwsgi | grep Active*
+  register: check_uwsgi_service
+  notify: check_uwsgi_service 
