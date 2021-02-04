@@ -1,62 +1,60 @@
-Ansible Role: template
+Ansible Role: uWSGI
 =========
 
-本 Role 在是一个模块化role的模板格式，用于规范化模块化role的创作。接来下的内容是模块化role的readme格式
+This role is for you to install **[uWSGI](https://github.com/unbit/uwsgi)** and some useful plugin
+
+If you want this role to support more applications, you can [**submit Issues**](https://github.com/websoft9dev/role_uwsgi/issues/new/choose) for us.
 
 ## Requirements
 
-运行本 Role，请确认符合如下的必要条件：
+Make sure these requirements need before the installation:
 
 | **Items**      | **Details** |
 | ------------------| ------------------|
-| Operating system | CentOS7.x Ubuntu18.04 AmazonLinux|
-| Python 版本 | Python2  |
-| Python 组件 |    |
-| Runtime |  |
-
+| Operating system | CentOS7.x Ubuntu18.04 |
+| Python version | Python2, Python3  |
 
 ## Related roles
 
-本 Role 在语法上不依赖其他 role 的变量，但程序运行时需要确保已经运行: common。以下为例：
+This Role does not depend on other role variables in syntax, but it depend on other role before:
 
 ```
-  roles:
-    - {role: role_common, tags: "role_common"}
-    - {role: role_cloud, tags: "role_cloud"}
-    - {role: role_template, tags: "role_template"}
+roles:
+  - { role: role_common }
+  - { role：role_uwsgi }
 ```
 
 
 ## Variables
 
-本 Role 主要变量以及使用方法如下：
+The main variables of this Role and how to use them are as follows:
 
-| **Items**      | **Details** | **Format**  | **是否初始化** |
+| **Items**      | **Details** | **Format**  | **Need to assignment** |
 | ------------------| ------------------|-----|-----|
-| template_applications | True, False | 布尔 | 否 |
+| uwsgi_version | "latest" | String | No |
 
-注意： 
-1. ×××××××
-2. ×××××××
 
 ## Example
 
 ```
-- name: Memcached
-  hosts: all
-  become: yes
-  become_method: sudo 
-  vars_files:
-    - vars/main.yml 
-
-  roles:
-    - {role: role_common, tags: "role_common"}
-    - {role: role_cloud, tags: "role_cloud"}
-    - {role: role_template, tags: "role_template"}
+  
 ```
+
+## Resources
+
+* [Documentation](https://support.websoft9.com/docs/uwsgi)
+* [Deploy by Image](https://apps.websoft9.com/uwsgi)
+* [Deploy by Script](https://github.com/websoft9/ansible-uwsgi)
+
+
+## License
+
+[LGPL-3.0](/License.md), Additional Terms: It is not allowed to publish free or paid image based on this repository in any Cloud platform's Marketplace.
+
+Copyright (c) 2016-present, Websoft9
 
 ## FAQ
 
-1. 注意变量命名一定要符合role名称在前的规范
-2. 尽量减少role之间的依赖关系
-3. role默认变量设置要科学，即默认变量下语法是顺畅的
+#### Is there uwsgi service?
+
+Yes
